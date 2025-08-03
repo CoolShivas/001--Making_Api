@@ -15,5 +15,9 @@
     "url": "https://github.com/CoolShivas/001--Making_Api/issues"
   },
   "homepage": "https://github.com/CoolShivas/001--Making_Api#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
 }
