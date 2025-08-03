@@ -4,9 +4,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
+
 const mongoURL =
-  "mongodb+srv://shivas2710cool00:<db_password>@cluster0.blsv8oz.mongodb.net/";
+  "mongodb+srv://shivas2710cool00:9o9874o9!S@cluster0.blsv8oz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 app.use(express.json());
+
+mongoose
+  .connect(mongoURL, {
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log("Connected to mongoDB database");
+    // // Output on Terminal as :- Connected to mongoDB database;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.listen(5000, () => {
   console.log("Server running at 5000");
