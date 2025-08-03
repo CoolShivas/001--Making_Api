@@ -3,12 +3,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+app.use(express.json());
+
 const app = express();
 
 const mongoURL =
   "mongodb+srv://shivas2710cool00:9o9874o9!S@cluster0.blsv8oz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-app.use(express.json());
 
 mongoose
   .connect(mongoURL, {
@@ -82,3 +82,38 @@ app.post("/post", async (request, response) => {
     // // // }
   }
 });
+
+require("./userDetails");
+
+const User = mongoose.model("userInformation");
+
+app.post("/registry", async (req, res) => {
+  const { name, email, mobile } = req.body;
+  try {
+    await User.create({
+      userName: name,
+      emailId: email,
+      phoneNumber: mobile,
+    });
+    res.send({ status: "OK" });
+  } catch (error) {
+    res.send({ status: "error" });
+  }
+});
+// // // Now, Open the Terminal and run command node app.js
+// // // We will get :-
+// // // Server running at 5000
+// // // Connected to mongoDB database
+// // // Then, Open the POSTMAN and set it to POST => http://localhost:5000/registry
+// // // Set the Header and Body as previously done the same.
+// // // {
+// // // "name" : "shivaiji",
+// // // "email" : "shivakhateekchouhan@gmail.com",
+// // //     "mobile":"0123456789"
+// // // }
+// // // Then, hit the Send button we will get the response
+// // // {
+// // // "status": "OK"
+// // // }
+
+// // // And, Finally on MongoDB, open the Collection we get out posted data;
