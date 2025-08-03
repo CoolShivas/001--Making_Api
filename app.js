@@ -41,4 +41,12 @@ app.post("/post", async (request, response) => {
   // // // We will get Output on Terminal as => Undefined
   // // // To resolve this error use => app.use(express.json());
   // // // We will get Output on Terminal as => { username: 'shiva khateek chouhan' }
+  const { username } = request.body; // Destructuring of data;
+  if (username === "shiva khateek chouhan") {
+    response.send({ status: "ok" });
+    // // // We will get Output on POSTMAN as server =>
+    // // // {
+    // // //     "status": "ok"
+    // // // }
+  }
 });
