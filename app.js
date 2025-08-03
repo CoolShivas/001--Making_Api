@@ -1,9 +1,11 @@
 // // // Starting of formation or making of api's;
 
 const express = require("express");
+const mongoose = require("mongoose");
 
 const app = express();
-
+const mongoURL =
+  "mongodb+srv://shivas2710cool00:<db_password>@cluster0.blsv8oz.mongodb.net/";
 app.use(express.json());
 
 app.listen(5000, () => {
@@ -52,7 +54,7 @@ app.post("/post", async (request, response) => {
   // // // Handling the errors with the help of tryCatch block;
   // // // Here, we have written the wrong spelling of username and catching the error;
   try {
-    if (usernam === "shiva khateek chouhan") {
+    if (username === "shiva khateek chouhan") {
       response.send({ status: "ok" });
     } else {
       response.send({ status: "data not found" });
