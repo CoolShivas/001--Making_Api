@@ -42,11 +42,27 @@ app.post("/post", async (request, response) => {
   // // // To resolve this error use => app.use(express.json());
   // // // We will get Output on Terminal as => { username: 'shiva khateek chouhan' }
   const { username } = request.body; // Destructuring of data;
-  if (username === "shiva khateek chouhan") {
-    response.send({ status: "ok" });
-    // // // We will get Output on POSTMAN as server =>
+  //   if (username === "shiva khateek chouhan") {
+  //     response.send({ status: "ok" });
+  //     // // // We will get Output on POSTMAN as server =>
+  //     // // // {
+  //     // // //     "status": "ok"
+  //     // // // }
+  //   }
+  // // // Handling the errors with the help of tryCatch block;
+  // // // Here, we have written the wrong spelling of username and catching the error;
+  try {
+    if (usernam === "shiva khateek chouhan") {
+      response.send({ status: "ok" });
+    } else {
+      response.send({ status: "data not found" });
+    }
+    // // // Open the terminal first clear and run the command first i.e, node app.js
+    // // // Then, Open the POSTMAN and post the same username data again we will get status as error;
+  } catch (error) {
+    response.send({ status: "something went wrong try again later" });
     // // // {
-    // // //     "status": "ok"
+    // // //     "status": "something went wrong try again later"
     // // // }
   }
 });
